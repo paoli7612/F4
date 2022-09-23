@@ -8,6 +8,10 @@ class Match:
     def start(self):
         self.running = True
         while self.running:
-            x = self.grill.get_choice()
+            try:
+                x = self.grill.get_choice()
+            except:
+                self.running = False
+                continue
             y = 5
             self.grill.token(self.turn, x, y)

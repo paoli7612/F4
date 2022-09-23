@@ -42,7 +42,7 @@ class Grill:
                 if event.type == pygame.KEYDOWN:
                     key = event.key - 49
                 elif event.type == pygame.QUIT:
-                    return Refr.QUIT
+                    raise Exception("Quit")
         return key
 
     def token(self, turn, x, y):
