@@ -11,7 +11,6 @@ def draw_token(surface, pos, color):
 class Grill:
     def __init__(self):
         pygame.init()
-        self.font_name = pygame.font.match_font(Opt.Font.NAME)
         self.screen = pygame.display.set_mode(Opt.Window.SIZE)
         self.screen.fill(Opt.Colors.BACKGROUND)
         self.mount_under()
@@ -36,7 +35,7 @@ class Grill:
                         int(y*Opt.Token.SIZE + Opt.Window.MARGIN + Opt.Token.SIZE/2))
                 draw_token(self.upper_screen,center,Opt.Colors.KEY)
 
-    def get_position(self):
+    def get_choice(self):
         key = None
         while not key in list(range(7)):
             for event in pygame.event.get():

@@ -1,9 +1,9 @@
-from draw import Grill
+from match import Match
 import time
 
 class Boss:
     def __init__(self):
-        self.grill = Grill()
+        Match().start()
         time.sleep(3)
 
 if __name__ == '__main__':
