@@ -4,12 +4,20 @@ from playground import Playground
 class Match:
     def __init__(self):
         self.grill = Grill()
-        self.turn = True
+        self.turn = 1
         self.playground = Playground()
+
+    def win(self):
+        w = self.playground.win()          
+        if w:
+            self.grill.win(w)
+            self.running = False
 
     def start(self):
         self.running = True
         while self.running:
+            if self.win():
+                break
             try:
                 x = self.grill.get_choice()
             except:
@@ -24,4 +32,4 @@ class Match:
 
     
     def next_turn(self):
-        self.turn = not self.turn
+        self.turn = 3 - self.turn

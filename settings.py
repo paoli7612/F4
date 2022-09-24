@@ -38,7 +38,8 @@ class Opt:
 
 
 class Refr:
-    PLAYER = True
-    COMPUTER = False
+    EMPTY = 0
+    PLAYER = 1
+    COMPUTER = 2
     QUIT = -1
     ERROR = -2
