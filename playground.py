@@ -1,4 +1,4 @@
-from settings import Refr
+from settings import Opt, Refr
 
 
 def isWin(a, b, c, d):
@@ -9,8 +9,8 @@ def isWin(a, b, c, d):
 
 class Playground(list):
     def __init__(self):
-        for _ in range(6):
-            self.append([Refr.EMPTY]*7)
+        for _ in range(Opt.Window.NY):
+            self.append([Refr.EMPTY]*Opt.Window.NX)
 
     def __str__(self):
         r = ""
@@ -30,7 +30,15 @@ class Playground(list):
 
 
     def win(self):
-        for y in range(6):
-            for x in range(4):
-                if isWin(self[y][x+0], self[y][x+1], self[y][x+2], self[y][x+3]):
-                    print("Riga" + str(y) + " a partire dalla colonna " + str(x))
+        for y in range(Opt.Window.NY):
+            for x in range(Opt.Window.NX):
+                # Controllo vittoria orizzontale
+                try:
+                    if isWin(self[y][x+0], self[y][x+1], self[y][x+2], self[y][x+3]):
+                        return (x, y, Refr.O)
+                except: pass
+                # Controllo vittoria verticale
+                try:
+                    if isWin(self[y+0][x], self[y+1][x], self[y+2][x], self[y+3][x]):
+                        return (x, y, Refr.V)
+                except: pass

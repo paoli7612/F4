@@ -43,3 +43,6 @@ class Refr:
     COMPUTER = 2
     QUIT = -1
     ERROR = -2
+    O = 1
+    D = 2
+    V = 3

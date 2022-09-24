@@ -1,6 +1,10 @@
-from settings import Opt, Refr
+from lib2to3.pgen2.token import OP
+from time import sleep
+from settings import RGB, Opt, Refr
 import pygame
 
+def draw_line(surface, start, end, color=(0, 0, 0), thickness=0):
+    pygame.draw.line(surface, color, start, end, thickness)
 def draw_rect(surface, rect, color, thickness=0):
     pygame.draw.rect(surface, color, rect, thickness)
 def draw_circle(surface, pos, radius, color, thickness=0):
@@ -58,6 +62,18 @@ class Grill:
                 self.screen.blit(self.upper_screen,(0,0))
                 self.last_move = now
                 pygame.display.flip()
+    
+    def win(self, w):
+        x, y, d = w
+        print(x, y)
+        if (d == Refr.O):
+            start = int(x * Opt.Token.SIZE + Opt.Window.MARGIN), int(y*Opt.Token.SIZE + Opt.Window.MARGIN + Opt.Token.RADIUS + 10)
+            end = int((x+4) * Opt.Token.SIZE + Opt.Window.MARGIN), int(y*Opt.Token.SIZE + Opt.Window.MARGIN + Opt.Token.RADIUS + 10)
+        elif (d == Refr.V):
+            start = int(x * Opt.Token.SIZE + Opt.Window.MARGIN + Opt.Token.RADIUS + 10), int(y * Opt.Token.SIZE + Opt.Window.MARGIN)
+            end = int(x * Opt.Token.SIZE + Opt.Window.MARGIN + Opt.Token.RADIUS + 10), int((y+4) * Opt.Token.SIZE + Opt.Window.MARGIN)
+        draw_line(self.screen, start, end, RGB.GREY, 20)
+        pygame.display.flip()
 
 
 class Token(pygame.sprite.Sprite):
