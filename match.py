@@ -15,3 +15,7 @@ class Match:
                 continue
             y = 5
             self.grill.token(self.turn, x, y)
+            self.next_turn()
+    
+    def next_turn(self):
+        self.turn = not self.turn
